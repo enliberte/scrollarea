@@ -1,0 +1,4 @@
+.scroll-area {
+    height: inherit;
+    overflow: scroll;
+}

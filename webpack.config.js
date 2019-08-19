@@ -1,0 +1,40 @@
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+    entry: "./src/index.tsx",
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    },
+    output: {
+        path: path.join(__dirname, "/dist"),
+        filename: "index_bundle.js",
+        publicPath: '/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: {
+                    loader: "ts-loader"
+                }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                },
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.html"
+        }),
+    ]
+};
