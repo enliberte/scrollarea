@@ -24,11 +24,20 @@ const userList: Array<User> = [
 
 const App = () => {
     return (
-        <div className="container">
-            <ScrollArea onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}}>
-                {userList.map(user => <div key={user.id}>{user.name}</div>)}
-            </ScrollArea>
+        <div>
+            <div id="container1">
+                <ScrollArea onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}}>
+                    {userList.map(user => <div key={user.id}>{user.name}</div>)}
+                </ScrollArea>
+            </div>
+            <hr/>
+            <div id="container2">
+                <ScrollArea onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}} fixedScrollPx={10}>
+                    {userList.map(user => <div key={user.id}>{user.name}</div>)}
+                </ScrollArea>
+            </div>
         </div>
+
     )
 };
 
