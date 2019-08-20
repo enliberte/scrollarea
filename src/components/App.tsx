@@ -1,7 +1,8 @@
 import * as React from 'react';
 import ScrollArea from './ScrollArea/ScrollArea';
+import ScrollAreaFixed from "./ScrollAreaFixed/ScrollAreaFixed";
+import ScrollAreaWithRange from "./ScrollAreaFixedWithRange/ScrollAreaWithRange";
 import './App.css';
-
 
 interface User {
     id: number,
@@ -30,11 +31,15 @@ const App = () => {
                     {userList.map(user => <div key={user.id}>{user.name}</div>)}
                 </ScrollArea>
             </div>
-            <hr/>
             <div id="container2">
-                <ScrollArea onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}} fixedScrollPx={10}>
+                <ScrollAreaFixed onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}} fixedScrollPx={10}>
                     {userList.map(user => <div key={user.id}>{user.name}</div>)}
-                </ScrollArea>
+                </ScrollAreaFixed>
+            </div>
+            <div id="container3">
+                <ScrollAreaWithRange onScrollToBottom={() => {alert('Bottom')}} onScrollToTop={() => {alert('Top')}} fixedScrollPx={10}>
+                    {userList.map(user => <div key={user.id}>{user.name}</div>)}
+                </ScrollAreaWithRange>
             </div>
         </div>
 

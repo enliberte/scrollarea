@@ -6,18 +6,15 @@ interface IScrollAreaProps {
     children: React.ReactNode,
     onScrollToTop: Function,
     onScrollToBottom: Function,
-    fixedScrollPx?: number
 }
 
 
-const ScrollArea = ({children, onScrollToTop, onScrollToBottom, fixedScrollPx}: IScrollAreaProps) => {
+const ScrollArea = ({children, onScrollToTop, onScrollToBottom}: IScrollAreaProps) => {
     const [isScrolledBefore, setIsScrolledBefore]: [boolean, Function] = React.useState(false);
     const scrollContainer = React.useRef<HTMLDivElement | null>(null);
-    const handleScroll = (e: Event): void => {
-        if (fixedScrollPx) {
-            e.preventDefault();
-            scrollContainer.current.scrollBy(0, fixedScrollPx);
-        }
+
+
+    const handleScroll = (e: React.UIEvent<HTMLElement>): void => {
         if (isScrolledBefore) {
             if (scrollContainer.current.scrollTop === 0) {
                 onScrollToTop();
@@ -29,14 +26,8 @@ const ScrollArea = ({children, onScrollToTop, onScrollToBottom, fixedScrollPx}: 
         }
     };
 
-    React.useEffect(() => {
-        scrollContainer.current.addEventListener('scroll', handleScroll);
-        return () => {
-            scrollContainer.current.removeEventListener('scroll', handleScroll);
-        }
-    });
     return (
-        <div className="scroll-area" ref={scrollContainer}>
+        <div className="scroll-area" ref={scrollContainer} onScroll={handleScroll}>
             {children}
         </div>
     )

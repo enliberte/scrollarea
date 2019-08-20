@@ -1,0 +1,15 @@
+.scroll-area-fixed {
+    height: inherit;
+}
+
+.scroll-area-fixed-container {
+    height: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.scroll-area-fixed-children {
+    position: absolute
+}
+

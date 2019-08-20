@@ -1,0 +1,15 @@
+.scroll-area-range {
+    height: inherit;
+}
+
+.scroll-area-range-container {
+    height: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.scroll-area-range-children {
+    position: absolute
+}
+
